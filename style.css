@@ -13,6 +13,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: auto;
     border: 3px solid green;
 }
