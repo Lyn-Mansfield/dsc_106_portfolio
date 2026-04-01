@@ -16,5 +16,24 @@
     </nav>
 
     <h1>Contact</h1>
+
+    <form action="mailto:imansfield@ucsd.edu" method="POST" enctype="text/plain">
+        <label for="email">Email</label>
+        <input name="email" type="email">
+        <label for="subject">Subject</label>
+        <input name="subject">
+        <label for="body">Body</label>
+        <textarea name="body"></textarea>
+        <button></button>
+    </form>
+    
+Create our contact form fields. We need at least:
+
+    A single line text field (<input>) for the sender’s email address with name="email" and type="email"
+    A single line text field (<input>) for for the subject with name="subject" (you don’t need type="text" as that is the default)
+    A multiline text field (<textarea>) for the actual message with name="body"
+
+Wrap each field in a <label> with the field name as its contents
+Add a submit button with <button> (you don’t need type="submit" as that is the default)
 </body>
 </html>
