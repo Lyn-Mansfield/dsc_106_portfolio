@@ -10,6 +10,11 @@ body {
 }
 
 nav {
+  display: flex
+  a {
+    flex: 1
+  }
+  
   ul {
     display: contents;
   }
