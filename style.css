@@ -9,6 +9,15 @@ body {
   margin-inline: auto;
 }
 
+nav {
+  ul {
+    display: contents;
+  }
+  li {
+    display: contents;
+  }
+}
+
 h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
