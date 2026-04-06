@@ -59,15 +59,12 @@ nav {
 }
 
 form {
-  button {
-    font: inherit;
-  }
+  button, input, textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block: 0.6em;
 
-  input {
-    font: inherit;
-  }
-
-  textarea {
     font: inherit;
   }
 }
