@@ -23,7 +23,10 @@ nav {
     padding: 0.8em;
   }
   a.current {
+    border-bottom-width: 1px;
+    border-bottom-style: solid; 
     border-bottom-width: 0.4em;
+    padding-bottom: 1em;
   }
 
   ul {
