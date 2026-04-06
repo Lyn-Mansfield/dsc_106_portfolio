@@ -89,16 +89,10 @@ h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.image-wrapper {
+img {
   border-radius: 25px;
   border: 2px solid var(--color-accent);
-  display: inline-block;
-}
-
-.image-wrapper img {
-  border-radius: 25px; /* Match parent */
   padding: 0.5em;
-  display: block; /* Removes extra spacing */
 }
 
 .center {
