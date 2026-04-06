@@ -26,6 +26,7 @@ nav {
     border-bottom-width: 1px;
     border-bottom-style: solid; 
     border-bottom-width: 0.4em;
+    border-bottom-color: oklch(80% 3% 200);
     padding-bottom: 1em;
   }
 
