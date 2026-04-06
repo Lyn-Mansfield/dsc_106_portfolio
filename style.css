@@ -92,12 +92,12 @@ h1 {
 .image-wrapper {
   border-radius: 25px;
   border: 2px solid var(--color-accent);
-  padding: 0.5em;
   display: inline-block;
 }
 
 .image-wrapper img {
   border-radius: 25px; /* Match parent */
+  padding: 0.5em;
   display: block; /* Removes extra spacing */
 }
 
