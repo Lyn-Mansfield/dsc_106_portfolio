@@ -50,6 +50,20 @@ nav {
   }
 }
 
+form {
+  button {
+    font: inherit;
+  }
+
+  input {
+    font: inherit;
+  }
+  
+  textarea {
+    font: inherit;
+  }
+}
+
 h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
