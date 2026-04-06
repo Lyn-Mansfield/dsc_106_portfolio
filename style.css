@@ -19,7 +19,7 @@ body {
 body, h2, h3 {
   font: 100%/1.5 system-ui;
   font-family: "Oxygen", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -59,11 +59,22 @@ nav {
 }
 
 form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  
+  label {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+  }
+
   button, input, textarea {
+    /* Pretty, but wide
     display: block;
     width: 100%;
     box-sizing: border-box;
     margin-block: 0.6em;
+    */
 
     font: inherit;
   }
