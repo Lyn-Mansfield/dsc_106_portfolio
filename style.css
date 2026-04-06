@@ -16,7 +16,7 @@ body {
 }
 
 /* Define font parameters */
-body, h2, h3 {
+body {
   font: 100%/1.5 system-ui;
   font-family: "Oxygen", sans-serif;
   font-weight: 400;
@@ -85,7 +85,7 @@ form {
   }
 }
 
-h1 {
+h1, h2, h3 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
