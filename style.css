@@ -12,6 +12,9 @@ body {
 nav {
   display: flex;
   margin-bottom: 2em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid; 
+  border-bottom-color: oklch(80% 3% 200);
   a {
     flex: 1;
     text-decoration: none;
