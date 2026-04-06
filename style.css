@@ -22,6 +22,9 @@ nav {
     text-align: center;
     padding: 0.8em;
   }
+  a.current {
+    border-bottom-width: 0.4em;
+  }
 
   ul {
     display: contents;
