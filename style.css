@@ -108,6 +108,13 @@ img {
 }
 
 .resume {
+  article {
+    padding: 0;
+  }
+  section {
+    padding: 0;
+  }
+
   h1 {
     color: aqua;
   }
