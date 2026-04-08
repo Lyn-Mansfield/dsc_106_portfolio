@@ -101,6 +101,23 @@ img {
     height: auto;
 }
 
+.evenly-spaced {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resume {
+  h1 {
+    color: aqua;
+  }
+
+  li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+  }
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
