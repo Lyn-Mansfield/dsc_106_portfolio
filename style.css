@@ -116,6 +116,9 @@ img {
     font-family: "Lexend", sans-serif;
   }
 
+  ul {
+    list-style-type: none;
+  }
   li::before {
     content: '▶';
   }
