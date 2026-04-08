@@ -121,6 +121,7 @@ img {
 
   h1, h2, h3 {
     font-family: "Lexend", sans-serif;
+    font-weight: 100;
   }
 
   ul {
