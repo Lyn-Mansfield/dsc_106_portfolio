@@ -3,6 +3,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Oxygen:wght@300;400;700&display=swap');
 body {
   /* Set line height to 1.5 times the font size
 	   and use the OS’s UI font as the website font
@@ -111,10 +112,12 @@ img {
     color: aqua;
   }
 
+  h1, h2, h3 {
+    font-family: "Lexend", sans-serif;
+  }
+
   li::before {
     content: '▶';
-    position: absolute;
-    left: 0;
   }
 }
 
