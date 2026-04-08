@@ -95,6 +95,15 @@ img {
   border: 2px solid var(--color-accent);
 }
 
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
 .center {
     display: flex;
     justify-content: center;
@@ -116,7 +125,7 @@ img {
   }
 
   h1 {
-    color: aqua;
+    color: CornflowerBlue;
   }
 
   h1, h2, h3 {
