@@ -113,6 +113,7 @@ hr {
 
 .evenly-spaced {
   display: flex;
+  width: auto;
   justify-content: space-between;
 }
 
