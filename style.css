@@ -111,7 +111,13 @@ hr {
     height: auto;
 }
 
-.evenly-spaced {
+.space-evenly {
+  display: flex;
+  width: auto;
+  justify-content: space-evenly;
+}
+
+.space-between {
   display: flex;
   width: auto;
   justify-content: space-between;
