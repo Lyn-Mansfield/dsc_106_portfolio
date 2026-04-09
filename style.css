@@ -124,6 +124,13 @@ hr {
 }
 
 .resume {
+  .resume-border {
+    border: 2px solid black; 
+    padding: 10px; 
+    width: 80vw; 
+    height: "auto";
+  }
+
   article {
     padding: 0;
   }
@@ -132,7 +139,7 @@ hr {
   }
 
   h1 {
-    color: CornflowerBlue;
+    color: rgb(0, 164, 167);
   }
 
   h1, h2, h3 {
