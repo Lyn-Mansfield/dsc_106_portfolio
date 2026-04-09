@@ -131,6 +131,14 @@ hr {
     height: "auto";
   }
 
+  .intro {
+    text-align: center;
+
+    h3 {
+      font-weight: normal;
+    }
+  }
+
   article {
     padding: 0;
   }
@@ -149,6 +157,7 @@ hr {
     margin: 0;
     padding: 0;
   }
+
 
   ul {
     list-style-type: none;
