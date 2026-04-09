@@ -93,6 +93,11 @@ h1, h2, h3 {
 img {
   border-radius: 25px;
   border: 2px solid var(--color-accent);
+
+  .cat-pics {
+    width: 30em; 
+    height: "auto";
+  }
 }
 
 hr {
