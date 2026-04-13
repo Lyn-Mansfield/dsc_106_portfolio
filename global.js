@@ -30,6 +30,8 @@ let currentLink = navLinks.find(
   (a) => a.host === location.host && a.pathname === location.pathname,
 );
 
+console.log(currentLink)
+
 if (currentLink !== undefined) {
   currentLink.classList.add('current');
 }
