@@ -29,6 +29,7 @@ for (let p of pages) {
 
 // Identify current page nav link and give it appropriate tag
 let navLinks = $$("nav a")
+console.log(navLinks)
 let currentLink = navLinks.find(
   (a) => a.host === location.host && a.pathname === location.pathname,
 );
