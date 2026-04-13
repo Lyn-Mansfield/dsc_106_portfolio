@@ -5,9 +5,9 @@ function $$(selector, context = document) {
 }
 
 let pages = [
-  { url: '/', title: 'Home' },
-  { url: '/projects/', title: 'Projects' },
-  { url: '/contact/', title: 'Contact' },
+  { url: '', title: 'Home' },
+  { url: 'projects/', title: 'Projects' },
+  { url: 'contact/', title: 'Contact' },
   { url: 'https://github.com/Lyn-Mansfield', title: 'GitHub' },
 ];
 
@@ -16,7 +16,7 @@ document.body.prepend(nav);
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  // Local server
-  : "/website/";         // GitHub Pages repo name
+  : "/dsc_106_portfolio/";         // GitHub Pages repo name
 
 for (let p of pages) {
   let url = p.url;
