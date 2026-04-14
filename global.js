@@ -77,10 +77,10 @@ contactForm?.addEventListener('submit', function (event) {
     event.preventDefault();
 
     let data = new FormData(contactForm);
-    let url = contactForm.action;
+    let url = contactForm.action + "?";
     for (let [name, value] of data) {
         console.log(name, encodeURIComponent(value))
-        url = url + "?" + name + "=" + encodeURIComponent(value);
+        url = url + name + "=" + encodeURIComponent(value) + "&";
     }
     console.log(url);
     location.href = url;
