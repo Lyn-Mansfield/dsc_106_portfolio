@@ -53,8 +53,12 @@ document.body.insertAdjacentHTML(
 // Load saved color mode if remembered
 let selector = document.querySelector(".color-scheme")
 
+function setColorScheme(colorScheme) {
+    document.documentElement.style.setProperty('color-scheme', colorSchem);
+}
+
 if ("colorScheme" in localStorage) {
-    document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
+    setColorScheme(localStorage.colorScheme);
     // Set selector to same setting to maintain parity
     selector.value = localStorage.colorScheme;
 }
@@ -62,7 +66,7 @@ if ("colorScheme" in localStorage) {
 // Listener for changing modes
 selector.addEventListener('input', function (event) {
     console.log('color scheme changed to', event.target.value);
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
+    setColorScheme(event.target.value);
     // Remember chosen value
     localStorage.colorScheme = event.target.value
 });
