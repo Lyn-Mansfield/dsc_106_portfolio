@@ -50,3 +50,8 @@ document.body.insertAdjacentHTML(
 		</select>
 	</label>`,
 );
+
+// Listener for changing modes
+select.addEventListener('input', function (event) {
+  console.log('color scheme changed to', event.target.value);
+});
