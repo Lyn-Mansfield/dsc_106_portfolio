@@ -26,11 +26,13 @@ body {
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+
   display: flex;
   margin-bottom: 2em;
   border-bottom-width: 1px;
   border-bottom-style: solid; 
-  border-bottom-color: oklch(80% 3% 200 / 40%);
+  border-bottom-color: var(--border-color);
   a {
     flex: 1;
     text-decoration: none;
@@ -42,7 +44,7 @@ nav {
     border-bottom-width: 1px;
     border-bottom-style: solid; 
     border-bottom-width: 0.4em;
-    border-bottom-color: oklch(80% 3% 200);
+    border-bottom-color: var(--border-color);
   }
   a:hover {
     border-bottom-width: 1px;
