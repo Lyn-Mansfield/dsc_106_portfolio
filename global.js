@@ -55,6 +55,7 @@ let selector = document.querySelector(".color-scheme")
 
 function setColorScheme(colorScheme) {
     document.documentElement.style.setProperty('color-scheme', colorScheme);
+    console.log('color scheme changed to', event.target.value);
 }
 
 if ("colorScheme" in localStorage) {
@@ -65,7 +66,6 @@ if ("colorScheme" in localStorage) {
 
 // Listener for changing modes
 selector.addEventListener('input', function (event) {
-    console.log('color scheme changed to', event.target.value);
     setColorScheme(event.target.value);
     // Remember chosen value
     localStorage.colorScheme = event.target.value
