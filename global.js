@@ -75,8 +75,9 @@ selector.addEventListener('input', function (event) {
 let contactForm = document.querySelector("form")
 contactForm?.addEventListener('submit', function (event) {
     event.preventDefault();
+    
     let data = new FormData(contactForm);
-    url = new String;
+    let url = new String;
     for (let [name, value] of data) {
         url = url + encodeURIComponent(value);
     }
