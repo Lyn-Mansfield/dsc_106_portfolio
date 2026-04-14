@@ -36,8 +36,8 @@ for (let p of pages) {
 }
 
 // Add light/dark mode selector label
-let auto_option = matchMedia("(prefers-color-scheme: light)") ? "light" : "dark";
-console.log(auto_option)
+let auto_option = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+console.log("auto option is: ${auto_option}")
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
