@@ -4,7 +4,7 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// Generate nav menu 
+// Add nav menu 
 let pages = [
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
@@ -19,6 +19,7 @@ const BASE_PATH = (location.hostname === "localhost" || location.hostname === "1
   ? "/"                            // Local server
   : "/dsc_106_portfolio/";         // GitHub Pages repo name
 
+// Add all pages to nav menu
 for (let p of pages) {
   let url = p.url;
   url = !url.startsWith('http') ? BASE_PATH + url : url;
@@ -33,3 +34,19 @@ for (let p of pages) {
   );
   nav.append(a);   
 }
+
+// Add light/dark mode selector label
+let auto_option = matchMedia("(prefers-color-scheme: light)") ? "light" : "dark";
+print(auto_option)
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+	<label class="color-scheme">
+		Theme:
+		<select>
+			<option value="light dark"> Auto (${auto_option}) </option>
+            <option value="light"> Light </option>
+            <option value="dark"> Dark </option>
+		</select>
+	</label>`,
+);

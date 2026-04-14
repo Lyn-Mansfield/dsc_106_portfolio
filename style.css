@@ -26,7 +26,7 @@ body {
 }
 
 nav {
-  --border-color: oklch(50% 10% 200 / 40%);
+  --border-color: oklch(50% 10% 200 / 50%);
 
   display: flex;
   margin-bottom: 2em;
