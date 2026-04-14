@@ -24,18 +24,12 @@ for (let p of pages) {
   url = !url.startsWith('http') ? BASE_PATH + url : url;
   let title = p.title;
   
-  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
-}
-
-// Identify current page nav link and give it appropriate tag
-let navLinks = $$("nav a")
-console.log(navLinks)
-let currentLink = navLinks.find(
-  (a) => a.host === location.host && a.pathname === location.pathname,
-);
-
-console.log(currentLink)
-
-if (currentLink !== undefined) {
-  currentLink.classList.add('current');
+  let a = document.createElement('a');
+  a.href = url;
+  a.textContent = title;
+  a.classList.toggle(
+    'current',
+    a.host === location.host && a.pathname === location.pathname,
+  );
+  nav.append(a);   
 }
