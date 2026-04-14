@@ -1,5 +1,6 @@
 :root {
   --color-accent: oklch(0.7 0.1 214);
+  color-scheme: light dark;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
@@ -29,7 +30,7 @@ nav {
   margin-bottom: 2em;
   border-bottom-width: 1px;
   border-bottom-style: solid; 
-  border-bottom-color: oklch(80% 3% 200);
+  border-bottom-color: oklch(80% 3% 200 / 40%);
   a {
     flex: 1;
     text-decoration: none;
@@ -48,7 +49,7 @@ nav {
     border-bottom-style: solid; 
     border-bottom-width: 0.4em;
     border-bottom-color: var(--color-accent);
-    background-color: oklch(from var(--color-accent) 95% 5% h);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   }
 
   ul {
