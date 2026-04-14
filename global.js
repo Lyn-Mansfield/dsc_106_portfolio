@@ -70,3 +70,13 @@ selector.addEventListener('input', function (event) {
     // Remember chosen value
     localStorage.colorScheme = event.target.value
 });
+
+// Listener for correcting contact form
+let contactForm = document.querySelector("form")
+contactForm?.addEventListener('submit', function (event) {
+    event.preventDefault();
+    let data = new FormData(contactForm);
+    for (let [name, value] of data) {
+        console.log(name, value);
+    }
+})
