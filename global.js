@@ -50,26 +50,27 @@ document.body.insertAdjacentHTML(
 	</label>`,
 );
 
-// Load saved color mode if remembered
-let selector = document.querySelector(".color-scheme")
-
+// Function for changing color scheme
 function setColorScheme(colorScheme) {
     document.documentElement.style.setProperty('color-scheme', colorScheme);
-    console.log('color scheme changed to', event.target.value);
+    console.log('color scheme changed to', colorScheme);
 }
 
+// Listener for changing modes
+let selector = document.querySelector(".color-scheme");
+
+selector.addEventListener('input', function (event) {
+    setColorScheme(event.target.value);
+    // Remember chosen value
+    localStorage.colorScheme = event.target.value;
+});
+
+// Load saved color mode if remembered
 if ("colorScheme" in localStorage) {
     setColorScheme(localStorage.colorScheme);
     // Set selector to same setting to maintain parity
     selector.value = localStorage.colorScheme;
 }
-
-// Listener for changing modes
-selector.addEventListener('input', function (event) {
-    setColorScheme(event.target.value);
-    // Remember chosen value
-    localStorage.colorScheme = event.target.value
-});
 
 // Listener for correcting contact form
 let contactForm = document.querySelector("form")
