@@ -70,6 +70,7 @@ if ("colorScheme" in localStorage) {
     setColorScheme(localStorage.colorScheme);
     // Set selector to same setting to maintain parity
     selector.value = localStorage.colorScheme;
+    console.log(selector.value);
 }
 
 // Listener for correcting contact form
