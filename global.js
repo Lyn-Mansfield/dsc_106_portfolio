@@ -54,7 +54,7 @@ document.body.insertAdjacentHTML(
 let selector = document.querySelector(".color-scheme")
 
 function setColorScheme(colorScheme) {
-    document.documentElement.style.setProperty('color-scheme', colorSchem);
+    document.documentElement.style.setProperty('color-scheme', colorScheme);
 }
 
 if ("colorScheme" in localStorage) {
@@ -76,7 +76,8 @@ let contactForm = document.querySelector("form")
 contactForm?.addEventListener('submit', function (event) {
     event.preventDefault();
     let data = new FormData(contactForm);
+    fullURL = new String;
     for (let [name, value] of data) {
-        console.log(name, value);
+        console.log(name, encodeURIComponent(value));
     }
 })
