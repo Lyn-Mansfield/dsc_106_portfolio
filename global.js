@@ -76,8 +76,9 @@ let contactForm = document.querySelector("form")
 contactForm?.addEventListener('submit', function (event) {
     event.preventDefault();
     let data = new FormData(contactForm);
-    fullURL = new String;
+    url = new String;
     for (let [name, value] of data) {
-        console.log(name, encodeURIComponent(value));
+        url = url + encodeURIComponent(value);
     }
+    location.href = url;
 })
