@@ -77,7 +77,7 @@ contactForm?.addEventListener('submit', function (event) {
     event.preventDefault();
 
     let data = new FormData(contactForm);
-    let url = form.action + "?";
+    let url = contactForm.action + "?";
     for (let [name, value] of data) {
         console.log(name, encodeURIComponent(value))
         url = url + encodeURIComponent(value) + "=";
