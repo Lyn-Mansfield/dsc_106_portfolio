@@ -84,5 +84,6 @@ contactForm?.addEventListener('submit', function (event) {
     }
     // Remove last "=" which isn't needed
     url = url.slice(0, -1);
+    console.log(url);
     location.href = url;
 })
