@@ -64,7 +64,7 @@ function setColorScheme(colorScheme) {
     } else {
         document.body.classList.remove('dark-mode');
     }
-    console.log('currently using ', colorScheme, ' mode');
+    console.log('currently using', colorScheme, 'mode');
 }
 
 // Listener for changing modes
