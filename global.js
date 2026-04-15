@@ -1,4 +1,4 @@
-console.log('IT’S ALIVE!!!');
+console.log('GOOD MORNING ROKU CITY :D');
 
 function $$(selector, context = document) {
     return Array.from(context.querySelectorAll(selector));
