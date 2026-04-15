@@ -57,9 +57,9 @@ function setColorScheme(colorScheme) {
 }
 
 // Listener for changing modes
-let selector = document.querySelector(".color-scheme");
+let select = document.querySelector("select");
 
-selector.addEventListener('input', function (event) {
+select.addEventListener('input', function (event) {
     setColorScheme(event.target.value);
     // Remember chosen value
     localStorage.colorScheme = event.target.value;
@@ -69,8 +69,7 @@ selector.addEventListener('input', function (event) {
 if ("colorScheme" in localStorage) {
     setColorScheme(localStorage.colorScheme);
     // Set selector to same setting to maintain parity
-    selector.value = localStorage.colorScheme;
-    console.log(selector.value);
+    select.value = localStorage.colorScheme;
 }
 
 // Listener for correcting contact form
