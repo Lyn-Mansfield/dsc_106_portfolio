@@ -1,6 +1,11 @@
 :root {
   --color-accent: oklch(0.7 0.1 214);
+  --border-color: black;
   color-scheme: light dark;
+}
+
+.dark-mode {
+    --border-color: white;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
@@ -116,7 +121,7 @@ hr {
     border: 0;
     margin: 1em 0.5em;
     padding: 0;
-    background-color: black;
+    color: var(--border-color);
 }
 
 .center {
@@ -140,7 +145,7 @@ hr {
 
 .resume {
   .resume-border {
-    border: 2px solid black; 
+    border: 2px solid var(--border-color); 
     padding: 2em; 
     width: 80vw; 
     height: "auto";
