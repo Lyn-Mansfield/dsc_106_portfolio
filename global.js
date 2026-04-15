@@ -36,7 +36,10 @@ for (let p of pages) {
 }
 
 // Add light/dark mode selector label
-let auto_option = matchMedia("(prefers-color-scheme: light)").matches ? "Light" : "Dark";
+function getSystemPreference() {
+    return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+let auto_option = getSystemPreference().toUpperCase();
 document.body.insertAdjacentHTML(
     'afterbegin',
     `
