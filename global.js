@@ -67,8 +67,9 @@ select.addEventListener('input', function (event) {
 
 // Load saved color mode if remembered
 if ("colorScheme" in localStorage) {
+    console.log("Previous color scheme save found! Loading...");
     setColorScheme(localStorage.colorScheme);
-    // Set selector to same setting to maintain parity
+    // Set select element to same setting to maintain parity
     select.value = localStorage.colorScheme;
 }
 
