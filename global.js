@@ -54,6 +54,17 @@ document.body.insertAdjacentHTML(
 function setColorScheme(colorScheme) {
     document.documentElement.style.setProperty('color-scheme', colorScheme);
     console.log('color scheme changed to', colorScheme);
+    // If using auto color, see what color is preferred
+    if (colorScheme === 'light dark') {
+        colorScheme = getSystemPreference();
+    }
+    // Apply different styling if using dark mode
+    if (colorScheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+    console.log('currently using ', colorScheme, ' mode');
 }
 
 // Listener for changing modes
