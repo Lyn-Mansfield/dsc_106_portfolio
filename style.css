@@ -121,7 +121,7 @@ hr {
     border: 0;
     margin: 1em 0.5em;
     padding: 0;
-    color: var(--border-color);
+    background-color: var(--border-color);
 }
 
 .center {
