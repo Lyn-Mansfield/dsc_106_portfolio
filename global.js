@@ -42,7 +42,7 @@ function getSystemPreference() {
 
 // Make auto option capital case
 let auto_option = getSystemPreference()
-let auto_option = auto_option.charAt(0).toUpperCase() + auto_option.slice(1);
+auto_option = auto_option.charAt(0).toUpperCase() + auto_option.slice(1);
 document.body.insertAdjacentHTML(
     'afterbegin',
     `
