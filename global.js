@@ -39,7 +39,10 @@ for (let p of pages) {
 function getSystemPreference() {
     return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
-let auto_option = getSystemPreference().toUpperCase();
+
+// Make auto option capital case
+let auto_option = getSystemPreference()
+let auto_option = auto_option.charAt(0).toUpperCase() + auto_option.slice(1);
 document.body.insertAdjacentHTML(
     'afterbegin',
     `
