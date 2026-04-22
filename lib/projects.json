@@ -16,6 +16,7 @@
     "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Lead project designer and programmer in a team of two, exploring a real-world League of Legends dataset to using character selection to predict game outcomes, implemented using pandas and scikit-learn."
+  },
   {
     "title": "ER Enemy Type Randomizer",
     "year": "2024",
