@@ -115,12 +115,24 @@ img {
   height: "auto";
 }
 
+/* Github Stats */
 dl {
-  display: grid;
+  display: grid;  
+  grid-template-columns: repeat(4, 1fr); /* Adjust number of columns */
+  gap: 1rem;
   border: 2px solid var(--color-accent);
-
+}
+dt {
+  grid-row: 1;
+  font-weight: bold;
+}
+dd {
+  font-size: 2em;
+  grid-row: 2;
+  margin: 0;
 }
 
+/* Resume */
 hr {
     display: block;
     height: 4px;
