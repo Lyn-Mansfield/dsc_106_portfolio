@@ -119,19 +119,13 @@ export async function fetchJSON(url) {
   }
 }
 
-function isJSON(str) {
-    try {
-        JSON.parse(str);
-        return true;
-    } catch (e) {
-        return false;
-    }
-}
+
 export function renderProjects(projects, containerElement, headingLevel='h2') {
     if (containerElement === null) {
         throw new Error('containerElement cannot be null');
     }
-    if (!isJSON(projects)) {
+    // Should be given a JS array, not a JSON string
+    if (!Array.isArray(data)(projects)) {
         throw new Error('projects should be valid JSON');
     }
 
