@@ -125,7 +125,7 @@ export function renderProjects(projects, containerElement, headingLevel='h2') {
         throw new Error('containerElement cannot be null');
     }
     // Should be given a JS array, not a JSON string
-    if (!Array.isArray(data)(projects)) {
+    if (!Array.isArray(projects)) {
         throw new Error('projects should be valid JSON');
     }
 
