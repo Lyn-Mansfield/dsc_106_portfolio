@@ -1,61 +1,72 @@
 [
   {
-    "title": "Lorem ipsum dolor sit.",
+    "title": "Reddit Virality Study",
+    "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo dolores iste mollitia veniam eveniet iure illo sunt, omnis voluptatum cumque at, consequatur dolorem autem voluptates eaque. Molestias molestiae sapiente reiciendis."
+    "description": "Leader and principal programmer of a team of six students collaborating on a school project designed to identify trends in the lifespans of text-based memes online. Found significant results and created an accessible video presentation as a deliverable."
   },
   {
-    "title": "Illo aspernatur cum repellendus?",
+    "title": "MTG Deck Builder",
+    "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Perferendis, voluptatum provident accusamus ipsam reprehenderit, libero recusandae cumque explicabo quae id repudiandae vitae, facere beatae saepe eos similique ex cupiditate. Nihil accusamus facilis unde doloribus harum reiciendis. Praesentium, nobis."
+    "description": "Solo developer on a WIP Magic: The Gathering deck builder application for organizing and creating new decks. Implemented using Tkinter and pandas, drawing its data from the official Magic: The Gathering API."
   },
   {
-    "title": "Doloribus ex quaerat incidunt?",
+    "title": "League Pick2Win",
+    "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Modi porro libero maxime neque explicabo quis harum corporis praesentium, velit ad dolor laborum accusamus rerum consequuntur iste excepturi quia odio aliquam! Facere saepe reiciendis, incidunt perferendis voluptatibus quod quae."
+    "description": "Lead project designer and programmer in a team of two, exploring a real-world League of Legends dataset to using character selection to predict game outcomes, implemented using pandas and scikit-learn."
+  {
+    "title": "ER Enemy Type Randomizer",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Personal tool built for Elden Ring Enemy Randomizer. Default behavior is to have each enemy individually randomized, but does not have easy functionality for changing each type of enemy to another type. This project helped remedy this, which led to each area still feeling unique instead of pulling from the same enemy pool the entire game."
   },
   {
-    "title": "Debitis porro tempore perferendis.",
+    "title": "Dead Soundscape",
+    "year": "2023",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Nisi, deserunt nobis perspiciatis assumenda, esse corporis illo magnam dolores architecto distinctio, voluptatibus praesentium provident nesciunt cupiditate accusantium consequuntur expedita excepturi tenetur fuga est debitis aliquam. Earum laudantium in omnis?"
-  },
-  {
-    "title": "Molestias perferendis facilis nobis.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Officiis quibusdam eum nemo possimus maiores reiciendis cupiditate quidem, nihil autem? Dolorem assumenda sint distinctio expedita molestiae, eum modi? Non ut at similique aut deserunt est distinctio architecto error debitis."
+    "description": "Audio project for MUS 7 creating a soundscape incorporating sounds from around the Eucalyptus Grove, a manmade natural space that is much more designed and suited for human life than animal or plant life."
   },
   {
     "title": "Ad minima amet quis.",
+    "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Magnam dolores non, dignissimos hic facere, placeat quidem quibusdam nesciunt nulla nostrum eveniet earum deleniti. Eius vitae eaque ipsum exercitationem reiciendis quo consectetur, maiores quisquam. Voluptates assumenda facilis sit architecto."
   },
   {
     "title": "Animi temporibus quasi id.",
+    "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Sint sed placeat sequi tenetur consectetur, reprehenderit maiores omnis recusandae quos eum incidunt laudantium accusamus beatae nemo error quo at non. Qui nam laudantium reiciendis dolorem sit in accusamus repudiandae."
   },
   {
     "title": "Quaerat amet ratione doloremque!",
+    "year": "2022",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Explicabo in pariatur eaque ipsa architecto, odit inventore ad magni adipisci quo fuga dolores accusantium officiis iste! Cumque totam quibusdam harum error vel adipisci voluptas, perspiciatis est placeat nihil nemo."
   },
   {
     "title": "Expedita voluptas beatae delectus?",
+    "year": "2021",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Praesentium optio blanditiis autem quaerat a vero fuga temporibus corrupti, vel pariatur repudiandae exercitationem eligendi. Doloremque cum aliquam eveniet totam quo, earum suscipit neque reiciendis amet ab quidem nam quaerat."
   },
   {
     "title": "Minus corporis praesentium aliquam?",
+    "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Impedit maxime placeat nesciunt voluptatibus autem deleniti officiis fuga quibusdam error a, odio quisquam voluptatem libero aut facere voluptates neque est sunt dicta ipsam. Blanditiis aperiam quam maxime harum deleniti."
   },
   {
     "title": "Possimus quaerat sequi totam.",
+    "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Nisi quia veritatis deserunt qui recusandae. Minus explicabo tempore dolor praesentium incidunt voluptatem cumque esse deserunt ea corporis tempora reprehenderit, sed ex voluptate veritatis nesciunt est sequi facere illo ipsum?"
   },
   {
     "title": "Molestias nesciunt odio sit.",
+    "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Voluptate, repudiandae. Et fugit aut aliquid odit obcaecati voluptatum nulla eius quisquam minus pariatur earum commodi, ullam nobis? Ducimus, molestiae? Deleniti illum doloribus magni incidunt dolores tempore culpa animi accusantium?"
   }

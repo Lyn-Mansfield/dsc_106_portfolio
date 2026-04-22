@@ -117,15 +117,14 @@ img {
 
 /* Stats/Project Showcase */
 .showcase {
+  border-radius: 25px;
+  border: 2px solid var(--color-accent);
+  
   div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
-  }
-
-  h2 {
-    font-size: 3em;
   }
 }
 
