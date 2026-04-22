@@ -119,7 +119,7 @@ export async function fetchJSON(url) {
   }
 }
 
-export async function fetchGitHubData(username) {
+export async function fetchGithubData(username) {
     return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
