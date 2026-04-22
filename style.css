@@ -115,21 +115,43 @@ img {
   height: "auto";
 }
 
+/* Stats/Project Showcase */
+.showcase {
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+}
+
 /* Github Stats */
 dl {
   display: grid;  
   grid-template-columns: repeat(4, 1fr); /* Adjust number of columns */
   gap: 1rem;
-  border: 2px solid var(--color-accent);
 }
 dt {
   grid-row: 1;
   font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--color-accent);
 }
 dd {
   font-size: 2em;
   grid-row: 2;
   margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Resume */
@@ -208,6 +230,7 @@ hr {
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  padding-bottom: 10em;
 
   article {
     display: grid;
