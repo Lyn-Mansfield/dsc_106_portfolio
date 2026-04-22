@@ -242,6 +242,12 @@ hr {
     gap: 1em;
   }
   h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
+  }
+  image {
+    height: 320px;
   }
 }
