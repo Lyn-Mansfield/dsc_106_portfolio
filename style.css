@@ -115,6 +115,12 @@ img {
   height: "auto";
 }
 
+dl {
+  display: grid;
+  border: 2px solid var(--color-accent);
+
+}
+
 hr {
     display: block;
     height: 4px;
