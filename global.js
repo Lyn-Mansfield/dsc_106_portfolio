@@ -124,7 +124,7 @@ export function renderProjects(projects, containerElement, headingLevel='h2') {
         throw new Error('containerElement cannot be null');
     }
     try {
-        JSON.parse(str);
+        JSON.parse(projects);
     } catch (e) {
         throw new Error('projects should be valid JSON');
     }
