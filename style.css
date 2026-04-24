@@ -248,7 +248,6 @@ hr {
     margin: 0;
   }
   img {
-    width: 320px;
     border: 1px solid var(--color-accent);
     padding: 2px;
   }
