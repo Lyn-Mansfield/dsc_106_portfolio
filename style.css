@@ -107,8 +107,6 @@ h1, h2, h3 {
 img {
   border-radius: 25px;
   border: 2px solid var(--color-accent);
-
-  
 }
 .cat-pics {
   width: 30em; 
@@ -119,6 +117,8 @@ img {
 .showcase {
   border-radius: 25px;
   border: 2px solid var(--color-accent);
+  padding: 1em;
+  margin-bottom: 3em;
 
   div {
     display: flex;
@@ -247,7 +247,7 @@ hr {
     align-items: center;
     margin: 0;
   }
-  image {
+  img {
     height: 320px;
     border: 1px solid var(--color-accent);
     padding: 2px;
