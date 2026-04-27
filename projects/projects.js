@@ -31,9 +31,9 @@ console.log("Successfully rendered projects pie chart!")
 let legend = d3.select('.legend');
 data.forEach((d, i) => {
   legend
-    .append('li')
-    .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
-    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
+  .append('li')
+  .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
+  .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
 });
 console.log("Successfully rendered projects pie chart legend!")
 

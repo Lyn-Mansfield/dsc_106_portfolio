@@ -105,8 +105,8 @@ h1, h2, h3 {
 }
 
 img {
-  border-radius: 25px;
   border: 2px solid var(--color-accent);
+  border-radius: 25px;
 }
 .cat-pics {
   width: 30em; 
@@ -253,9 +253,38 @@ hr {
   }
 }
 
+.chart-display {
+  display: flex;
+  flex-direction: row;
+}
+
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
 
   overflow: visible;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  flex-direction: column;
+
+  border: 2px solid var(--color-accent);
+  border-radius: 25px;
+
+  .swatch {
+    width: 1.2em;
+    height: 1em;
+    border-radius: 40%;
+    background-color: var(--color);
+    aspect-ratio: 1 / 1;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
 }
