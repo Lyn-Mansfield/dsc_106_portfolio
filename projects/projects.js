@@ -5,16 +5,17 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 // Define each arc piece
 let data = [1, 2, 3, 4, 5, 5];
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 let sliceGenerator = d3.pie();
 let arcData = sliceGenerator(data);
 // Draw each arc piece to make a whole pie chart
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let arcs = arcData.map((d) => arcGenerator(d));
-arcs.forEach((arc) => {
+arcs.forEach((arc, i) => {
     d3.select('svg')
     .append('path')
     .attr('d', arc)
-    .attr('fill', () => d3.scaleOrdinal(d3.schemeCategory10)(Math.random()));
+    .attr('fill', colors(i));
 });
 console.log("Successfully rendered projects pie chart!")
 
