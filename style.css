@@ -252,3 +252,10 @@ hr {
     padding: 2px;
   }
 }
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
