@@ -8,6 +8,7 @@ let data = [1, 2, 3, 4, 5, 5];
 let sliceGenerator = d3.pie();
 let arcData = sliceGenerator(data);
 // Draw each arc piece to make a whole pie chart
+let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let arcs = arcData.map((d) => arcGenerator(d));
 arcs.forEach((arc) => {
     d3.select('svg')
