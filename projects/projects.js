@@ -15,6 +15,7 @@ arcs.forEach((arc) => {
     .attr('d', arc)
     .attr('fill', () => d3.scaleOrdinal(d3.schemeCategory10)(Math.random()));
 });
+console.log("Successfully rendered projects pie chart!")
 
 // Import Projects Data Block
 const projects = await fetchJSON('../lib/projects.json');
