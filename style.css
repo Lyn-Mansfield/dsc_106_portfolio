@@ -262,6 +262,7 @@ hr {
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
+  padding: 2em;
 
   overflow: visible;
 }
