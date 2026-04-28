@@ -256,6 +256,7 @@ hr {
 .chart-display {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 #projects-pie-plot {
@@ -266,11 +267,14 @@ hr {
 }
 
 .legend {
-  flex: 1; /* fill all extra space */
+  /* fill all extra space */
+  flex: 1;
+  align-items: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* fit into multiple columns if possible */
+  grid-auto-rows: minmax(10px, 3em);
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   width: 10rem;
-  padding: 2rem;
+  flex-direction: column;
 
   border: 2px solid var(--color-accent);
   border-radius: 25px;
@@ -287,6 +291,5 @@ hr {
     display: flex;
     justify-content: center;
     gap: 15px;
-    padding: 0.5em;
   }
 }
