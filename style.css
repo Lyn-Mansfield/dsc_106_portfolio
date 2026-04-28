@@ -266,10 +266,10 @@ hr {
 }
 
 .legend {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   width: 10rem;
-  flex-direction: column;
+  padding: 2rem;
 
   border: 2px solid var(--color-accent);
   border-radius: 25px;
@@ -284,7 +284,8 @@ hr {
 
   li {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
     padding: 0.5em;
   }
 }
