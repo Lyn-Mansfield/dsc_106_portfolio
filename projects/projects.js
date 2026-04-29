@@ -13,9 +13,11 @@ function renderPieChart(projectsGiven) {
         return { value: count, label: year };
     });
 
-    // Clear old svg data to prevent overlap
+    // Clear old data
     let newSVG = d3.select('svg');
     newSVG.selectAll('path').remove();
+    let newLegend = d3.select('.legend');
+    newLegend.selectAll('li').remove();
     // Define each new arc piece
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
     let sliceGenerator = d3.pie().value((d) => d.value);
@@ -24,32 +26,39 @@ function renderPieChart(projectsGiven) {
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     let arcs = arcData.map((d) => arcGenerator(d));
     arcs.forEach((arc, i) => {
-        d3.select('svg')
+        newSVG
         .append('path')
         .attr('d', arc)
         .attr('fill', colors(i))
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
             
-            d3.select('svg')
+            newSVG
             .selectAll('path')
             .attr('class', (_, idx) => (
                 idx === selectedIndex ? "selected" : null
-            )) // make class selected if it's the selected slice, otherwise no class 
+            )); // make class selected if it's the selected slice, otherwise no class 
+            
+            newLegend
+            .selectAll('li')
+            .attr('class', (_, idx) => (
+                idx === selectedIndex ? "selected" : null
+            ));
         })
     });
     console.log("Successfully rendered projects pie chart!")
 
-    // Render new pie chart legend
-    let legend = d3.select('.legend');
-    // Clear old legend
-    legend.selectAll('li').remove();
+    // Add new legend data
     data.forEach((d, i) => {
         legend
         .append('li')
         .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
     });
+
+    // Add pie slice click logic
+    
+    
     console.log("Successfully rendered projects pie chart legend!")
 }
 
