@@ -50,6 +50,8 @@ function renderPieChart(projectsGiven) {
             .attr('class', (_, idx) => (
                 idx === selectedIndex ? "selected" : null
             ));
+
+            displayFilteredProjects("new year");
         })
     });
     console.log("Successfully rendered projects pie chart!")
@@ -71,10 +73,10 @@ let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('change', (event) => {
     // Update query value
     queryFilter = event.target.value;
-    displayFilteredProjects();
+    displayFilteredProjects("new query");
 });
 
-function displayFilteredProjects() {
+function displayFilteredProjects(updateEvent) {
     let filteredProjects = allProjects.filter((project) => {
         // Text filter
         let values = Object.values(project).join('\n').toLowerCase();
@@ -89,7 +91,9 @@ function displayFilteredProjects() {
         return matchesText && matchesYear;
     });
     // Render filtered projects
-    renderPieChart(filteredProjects);
+    if (updateEvent === "new query") {
+        renderPieChart(filteredProjects); // don't update pie chart if we're just selecting a new year
+    }
     renderProjects(filteredProjects, projectsContainer, 'h2');
 }
 
