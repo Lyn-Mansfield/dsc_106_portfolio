@@ -65,7 +65,7 @@ const allProjects = await fetchJSON('../lib/projects.json');
 const projectnum = await allProjects.length;
 const projectTitle = document.querySelector('#project-title');
 projectTitle.innerText = `${projectnum} Projects`;
-// Fill page with actual projects
+// Fill page with all projects initially
 const projectsContainer = document.querySelector('.projects');
 renderPieChart(allProjects);
-renderProjects(projects, projectsContainer, 'h2');
+renderProjects(allProjects, projectsContainer, 'h2');
