@@ -7,7 +7,7 @@ let selectedYear = -1;
 function updateSelectedYear(newYear) {
     selectedYear = newYear;
     // Set text box to reflect current year selection
-    d3.select('p')
+    d3.select('#year-shower')
     .text(selectedYear !== -1 ? `Current year selected: ${selectedYear}` : '');
 }
 
@@ -47,7 +47,7 @@ function renderPieChart(projectsGiven) {
         .attr('fill', colors(i))
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
-            newSelectedYear = selectedIndex === -1 ? -1 : data[i].label;
+            let newSelectedYear = selectedIndex === -1 ? -1 : data[i].label;
             updateSelectedYear(newSelectedYear);
 
             newSVG
