@@ -23,7 +23,7 @@ function renderPieChart(projectsGiven) {
 
     // Update selectedIndex if possible if selectedYear is in use
     if (selectedYear !== -1) {
-        selectedIndex = projectsGiven.findIndex(item => item.year === selectedYear); // Defaults to -1 if not found
+        selectedIndex = data.findIndex(item => item.label === selectedYear); // Defaults to -1 if not found
         if (selectedIndex === -1) {
             updateSelectedYear(-1);
         }
