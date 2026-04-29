@@ -14,6 +14,10 @@ function renderPieChart(projectsGiven) {
         return { value: count, label: year };
     });
 
+    // Update selectedIndex if possible if yearFilter is in use
+    if (yearFilter !== -1) {
+        selectedIndex = projectsGiven.findIndex(item => item.year === selectedYear); // Defaults to -1 if not found
+    }
     // Clear old data
     let newSVG = d3.select('svg');
     newSVG.selectAll('path').remove();
@@ -59,9 +63,6 @@ function renderPieChart(projectsGiven) {
         .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
     });
-
-    // Add pie slice click logic
-    
     
     console.log("Successfully rendered projects pie chart legend!")
 }
