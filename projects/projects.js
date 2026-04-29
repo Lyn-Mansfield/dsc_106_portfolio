@@ -4,6 +4,13 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 // Pie Chart Block
 let selectedIndex = -1;
 let selectedYear = -1;
+function updateSelectedYear(newYear) {
+    selectedYear = newYear;
+    // Set text box to reflect current year selection
+    d3.select('p')
+    .text(selectedYear !== -1 ? `Current year selected: ${selectedYear}` : '');
+}
+
 function renderPieChart(projectsGiven) {
     let rolledData = d3.rollups(
         projectsGiven,
@@ -17,6 +24,9 @@ function renderPieChart(projectsGiven) {
     // Update selectedIndex if possible if selectedYear is in use
     if (selectedYear !== -1) {
         selectedIndex = projectsGiven.findIndex(item => item.year === selectedYear); // Defaults to -1 if not found
+        if (selectedIndex === -1) {
+            updateSelectedYear(-1);
+        }
     }
     // Clear old data
     let newSVG = d3.select('svg');
@@ -37,8 +47,9 @@ function renderPieChart(projectsGiven) {
         .attr('fill', colors(i))
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
-            selectedYear = selectedIndex === -1 ? -1 : data[i].label;
-            
+            newSelectedYear = selectedIndex === -1 ? -1 : data[i].label;
+            updateSelectedYear(newSelectedYear);
+
             newSVG
             .selectAll('path')
             .attr('class', (_, idx) => (

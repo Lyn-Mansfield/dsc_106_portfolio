@@ -167,11 +167,16 @@ hr {
     background-color: var(--border-color);
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
 }
 
 .space-evenly {
