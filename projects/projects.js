@@ -3,7 +3,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 // Pie Chart Block
 let selectedIndex = -1;
-let yearFilter = -1;
+let selectedYear = -1;
 function renderPieChart(projectsGiven) {
     let rolledData = d3.rollups(
         projectsGiven,
@@ -14,8 +14,8 @@ function renderPieChart(projectsGiven) {
         return { value: count, label: year };
     });
 
-    // Update selectedIndex if possible if yearFilter is in use
-    if (yearFilter !== -1) {
+    // Update selectedIndex if possible if selectedYear is in use
+    if (selectedYear !== -1) {
         selectedIndex = projectsGiven.findIndex(item => item.year === selectedYear); // Defaults to -1 if not found
     }
     // Clear old data
@@ -37,7 +37,7 @@ function renderPieChart(projectsGiven) {
         .attr('fill', colors(i))
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
-            yearFilter = selectedIndex === -1 ? -1 : data[i].label;
+            selectedYear = selectedIndex === -1 ? -1 : data[i].label;
             
             newSVG
             .selectAll('path')
@@ -84,8 +84,8 @@ function displayFilteredProjects() {
 
         // Year filter
         let matchesYear = true; // default to true if no year filter is in effect
-        if (yearFilter !== -1) {
-            matchesYear = project.year === yearFilter;
+        if (selectedYear !== -1) {
+            matchesYear = project.year === selectedYear;
         }
         
         return matchesText && matchesYear;
