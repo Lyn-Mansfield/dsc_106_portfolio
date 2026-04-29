@@ -58,7 +58,7 @@ function renderPieChart(projectsGiven) {
 
     // Add new legend data
     data.forEach((d, i) => {
-        legend
+        newLegend
         .append('li')
         .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
@@ -83,6 +83,7 @@ function displayFilteredProjects() {
         let matchesText = values.includes(queryFilter.toLowerCase());
 
         // Year filter
+        let matchesYear = true; // default to true if no year filter is in effect
         if (yearFilter !== -1) {
             matchesYear = project.year === yearFilter;
         }
