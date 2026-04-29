@@ -62,7 +62,7 @@ searchInput.addEventListener('change', (event) => {
 // Import Projects Data Block
 const allProjects = await fetchJSON('../lib/projects.json');
 // Update title
-const projectnum = await projects.length;
+const projectnum = await allProjects.length;
 const projectTitle = document.querySelector('#project-title');
 projectTitle.innerText = `${projectnum} Projects`;
 // Fill page with actual projects
