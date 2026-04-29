@@ -316,5 +316,9 @@ hr {
     display: flex;
     justify-content: center;
     gap: 15px;
+    
+    .selected {
+      --color: oklch(60% 45% 0) !important;
+    }
   }
 }
