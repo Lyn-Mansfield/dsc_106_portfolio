@@ -265,6 +265,24 @@ hr {
   padding: 2em;
 
   overflow: visible;
+
+  path {
+    transition: 300ms;
+  }
+
+  .selected {
+    --color: oklch(60% 45% 0) !important;
+
+    &:is(path) {
+      fill: var(--color);
+    }
+  }
+
+  &:has(path:hover) {
+    path:not(:hover) {
+      opacity: 0.5;
+    }
+  }
 }
 
 .legend {

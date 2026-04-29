@@ -2,6 +2,7 @@ import { fetchJSON, renderProjects } from '../global.js';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 // Pie Chart Block
+let selectedIndex = -1;
 function renderPieChart(projectsGiven) {
     let rolledData = d3.rollups(
         projectsGiven,
@@ -23,10 +24,19 @@ function renderPieChart(projectsGiven) {
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     let arcs = arcData.map((d) => arcGenerator(d));
     arcs.forEach((arc, i) => {
-    d3.select('svg')
+        d3.select('svg')
         .append('path')
         .attr('d', arc)
-        .attr('fill', colors(i));
+        .attr('fill', colors(i))
+        .on('click', () => {
+            selectedIndex = selectedIndex === i ? -1 : i;
+            
+            d3.select('svg')
+            .selectAll('path')
+            .attr('class', (_, idx) => (
+                idx === selectedIndex ? "selected" : null
+            )) // make class selected if it's the selected slice, otherwise no class 
+        })
     });
     console.log("Successfully rendered projects pie chart!")
 
@@ -43,6 +53,7 @@ function renderPieChart(projectsGiven) {
     console.log("Successfully rendered projects pie chart legend!")
 }
 
+// Search Bar Block
 let query = '';
 let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('change', (event) => {
@@ -57,7 +68,6 @@ searchInput.addEventListener('change', (event) => {
     renderPieChart(filteredProjects);
     renderProjects(filteredProjects, projectsContainer, 'h2');
 });
-
 
 // Import Projects Data Block
 const allProjects = await fetchJSON('../lib/projects.json');
