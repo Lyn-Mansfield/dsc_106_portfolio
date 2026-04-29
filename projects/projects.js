@@ -50,8 +50,6 @@ function renderPieChart(projectsGiven) {
             .attr('class', (_, idx) => (
                 idx === selectedIndex ? "selected" : null
             ));
-
-            displayFilteredProjects();
         })
     });
     console.log("Successfully rendered projects pie chart!")
