@@ -3,6 +3,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 // Pie Chart Block
 let selectedIndex = -1;
+let yearFilter = -1;
 function renderPieChart(projectsGiven) {
     let rolledData = d3.rollups(
         projectsGiven,
@@ -32,6 +33,7 @@ function renderPieChart(projectsGiven) {
         .attr('fill', colors(i))
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
+            yearFilter = selectedIndex === -1 ? -1 : data[i].label;
             
             newSVG
             .selectAll('path')
@@ -44,6 +46,8 @@ function renderPieChart(projectsGiven) {
             .attr('class', (_, idx) => (
                 idx === selectedIndex ? "selected" : null
             ));
+
+            displayFilteredProjects();
         })
     });
     console.log("Successfully rendered projects pie chart!")
@@ -63,20 +67,31 @@ function renderPieChart(projectsGiven) {
 }
 
 // Search Bar Block
-let query = '';
+let queryFilter = '';
 let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('change', (event) => {
     // Update query value
-    query = event.target.value;
-    // Filter projects
+    queryFilter = event.target.value;
+    displayFilteredProjects();
+});
+
+function displayFilteredProjects() {
     let filteredProjects = allProjects.filter((project) => {
+        // Text filter
         let values = Object.values(project).join('\n').toLowerCase();
-        return values.includes(query.toLowerCase());
+        let matchesText = values.includes(queryFilter.toLowerCase());
+
+        // Year filter
+        if (yearFilter !== -1) {
+            matchesYear = project.year === yearFilter;
+        }
+        
+        return matchesText && matchesYear;
     });
     // Render filtered projects
     renderPieChart(filteredProjects);
     renderProjects(filteredProjects, projectsContainer, 'h2');
-});
+}
 
 // Import Projects Data Block
 const allProjects = await fetchJSON('../lib/projects.json');
