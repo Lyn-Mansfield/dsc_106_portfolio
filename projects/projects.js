@@ -43,9 +43,6 @@ function renderPieChart(projectsGiven) {
     console.log("Successfully rendered projects pie chart legend!")
 }
 
-let allProjects = fetchJSON('../lib/projects.json');
-renderPieChart(allProjects);
-
 let query = '';
 let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('change', (event) => {
@@ -63,11 +60,12 @@ searchInput.addEventListener('change', (event) => {
 
 
 // Import Projects Data Block
-const projects = await fetchJSON('../lib/projects.json');
+const allProjects = await fetchJSON('../lib/projects.json');
 // Update title
 const projectnum = await projects.length;
 const projectTitle = document.querySelector('#project-title');
 projectTitle.innerText = `${projectnum} Projects`;
 // Fill page with actual projects
 const projectsContainer = document.querySelector('.projects');
+renderPieChart(allProjects);
 renderProjects(projects, projectsContainer, 'h2');
