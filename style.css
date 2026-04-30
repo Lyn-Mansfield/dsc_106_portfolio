@@ -167,6 +167,12 @@ hr {
     background-color: var(--border-color);
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .column {
   display: flex;
   flex-direction: column;
@@ -258,12 +264,6 @@ hr {
   }
 }
 
-.chart-display {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
@@ -312,13 +312,13 @@ hr {
     aspect-ratio: 1 / 1;
   }
 
+  .selected {
+    --color: oklch(60% 45% 0) !important;
+  }
+
   li {
     display: flex;
     justify-content: center;
     gap: 15px;
-    
-    .selected {
-      --color: oklch(60% 45% 0) !important;
-    }
   }
 }

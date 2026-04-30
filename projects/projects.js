@@ -8,7 +8,7 @@ function updateSelectedYear(newYear) {
     selectedYear = newYear;
     // Set text box to reflect current year selection
     d3.select('#year-shower')
-    .text(selectedYear !== -1 ? `Current year selected: ${selectedYear}` : '');
+    .text(selectedYear !== -1 ? `Current year selected: ${selectedYear}` : ' ');
 }
 
 function renderPieChart(projectsGiven) {
@@ -24,6 +24,8 @@ function renderPieChart(projectsGiven) {
     // Update selectedIndex if possible if selectedYear is in use
     if (selectedYear !== -1) {
         selectedIndex = data.findIndex(item => item.label === selectedYear); // Defaults to -1 if not found
+        console.log(data);
+        console.log(selectedIndex);
         if (selectedIndex === -1) {
             updateSelectedYear(-1);
         }
@@ -65,7 +67,6 @@ function renderPieChart(projectsGiven) {
             displayFilteredProjects("new year");
         })
     });
-    console.log("Successfully rendered projects pie chart!")
 
     // Add new legend data
     data.forEach((d, i) => {
@@ -74,8 +75,6 @@ function renderPieChart(projectsGiven) {
         .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
     });
-    
-    console.log("Successfully rendered projects pie chart legend!")
 }
 
 // Search Bar Block
