@@ -75,6 +75,9 @@ function renderPieChart(projectsGiven) {
         newLegend
         .append('li')
         .attr('style', `--color:${colors(i)}`) // set the style attribute while passing in parameters
+        .attr('class', (_, idx) => (
+                idx === selectedIndex ? "selected" : null
+            )) // check if there's already a selectedIndex, i.e. selectedYear exists in new search 
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
     });
 }
