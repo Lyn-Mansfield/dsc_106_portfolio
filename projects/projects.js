@@ -24,8 +24,7 @@ function renderPieChart(projectsGiven) {
     // Update selectedIndex if possible if selectedYear is in use
     if (selectedYear !== -1) {
         selectedIndex = data.findIndex(item => item.label === selectedYear); // Defaults to -1 if not found
-        console.log(data);
-        console.log(selectedIndex);
+        // If selected year not found in new search, then reset selected year
         if (selectedIndex === -1) {
             updateSelectedYear(-1);
         }
@@ -47,6 +46,9 @@ function renderPieChart(projectsGiven) {
         .append('path')
         .attr('d', arc)
         .attr('fill', colors(i))
+        .attr('class', (_, idx) => (
+                idx === selectedIndex ? "selected" : null
+            )) // check if there's already a selectedIndex, i.e. selectedYear exists in new search 
         .on('click', () => {
             selectedIndex = selectedIndex === i ? -1 : i;
             let newSelectedYear = selectedIndex === -1 ? -1 : data[i].label;
@@ -56,7 +58,7 @@ function renderPieChart(projectsGiven) {
             .selectAll('path')
             .attr('class', (_, idx) => (
                 idx === selectedIndex ? "selected" : null
-            )); // make class selected if it's the selected slice, otherwise no class 
+            )); // update selected arc's class to "selected" when clicked
             
             newLegend
             .selectAll('li')
