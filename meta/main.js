@@ -184,7 +184,7 @@ function renderTooltipContent(commit) {
     date.textContent = commit.datetime?.toLocaleString('en', {
         dateStyle: 'full',
     });
-    lines.textContent = data.filter((d) => d.commit === commit.id).length;
+    lines.textContent = data.filter(d => d.commit === commit.id).length;
 }
 
 function updateTooltipVisibility(isVisible) {
@@ -221,14 +221,17 @@ function createBrushSelector(svg) {
         .attr('class', 'brush')
         .call(brush);
 
-    console.log("added brush!");
-
     // Raise dots and everything after overlay
     svg.selectAll('.dots, .overlay ~ *').raise();
 }
 function brushed(event) {
     const selection = event.selection;
-    renderSelectionCount(selection);
+    const selectedCommits = selection
+        ? commits.filter((d) => isCommitSelected(selection, d))
+        : [];
+    renderSelectionCount(selectedCommits);
+    colorSelectedCommits(selectedCommits);
+    renderLanguageBreakdown(selectedCommits);
 }
 function isCommitSelected(selection, commit) {
     if (!selection) {
@@ -241,14 +244,37 @@ function isCommitSelected(selection, commit) {
 
     return x >= x0 && x <= x1 && y >= y0 && y <= y1;
 }
-function renderSelectionCount(selection) {
-    const selectedCommits = selection
-        ? commits.filter((d) => isCommitSelected(selection, d))
-        : [];
 
+function renderSelectionCount(selectedCommits) {
     const countElement = document.querySelector('#selection-count');
     countElement.textContent = `${selectedCommits.length || 'No'
         } commits selected`;
+}
+function colorSelectedCommits(selectedCommits) {
+    const svg = d3.select('svg');
+    
+    // Remove selected class from all dots
+    svg.selectAll('circle').classed('selected', false);
+    // Add selected class to dots matching selected commit IDs
+    selectedCommits.forEach(selectedCommit => {
+        svg.selectAll('circle')
+            .filter(d => d.id === selectedCommit.id)  // Match by ID
+            .classed('selected', true);
+    });
+}
 
-    return selectedCommits;
+function renderLanguageBreakdown(selectedCommits) {
+  if (selectedCommits.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  const requiredCommits = selectedCommits.length ? selectedCommits : commits;
+  const lines = requiredCommits.flatMap((d) => d.lines);
+
+  // Use d3.rollup to count lines per language
+  const breakdown = d3.rollup(
+    lines,
+    (v) => v.length,
+    (d) => d.type,
+  );
 }

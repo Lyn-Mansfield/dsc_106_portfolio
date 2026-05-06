@@ -46,7 +46,9 @@ circle {
   transform-origin: center;
   transform-box: fill-box;
 }
-
+circle.selected {
+  fill: #ff6b6b;
+}
 circle:hover {
   transform: scale(1.5);
 }
@@ -63,7 +65,4 @@ circle:hover {
   stroke-opacity: 0.7;
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
-}
-circle.selected {
-  fill: #ff6b6b;
 }
