@@ -13,6 +13,10 @@ async function loadData() {
     return data;
 }
 
+// Define as global variables, but actually defined in renderScatterPlot()
+let xScale = d3.scaleTime()
+let yScale = d3.scaleLinear()
+
 function processCommits(data) {
     return d3.groups(data, (d) => d.commit)
         .map(([commit, lines]) => {
@@ -87,18 +91,22 @@ function renderScatterPlot(data, commits) {
     const width = 1000;
     const height = 600;
 
-    const svg = d3
-        .select('#chart')
-        .append('svg')
-        .attr('viewBox', `0 0 ${width} ${height}`)
-        .style('overflow', 'visible');
-
-    const xScale = d3
-        .scaleTime()
+    xScale = xScale
         .domain(d3.extent(commits, (d) => d.datetime))
         .range([0, width])
         .nice();
-    const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+    yScale = yScale
+        .domain([0, 24])
+        .range([height, 0]);
+
+    const svg = d3
+        .select('#chart')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .attr('viewBox', `0 0 ${width} ${height}`)
+        .style('overflow', 'visible');
+    createBrushSelector(svg); // attach a brush to svg
 
     // Preprocessing step
     const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
@@ -107,7 +115,7 @@ function renderScatterPlot(data, commits) {
         .scaleSqrt()
         .domain([minLines, maxLines])
         .range([3, 21]);
-    
+
     const dots = svg.append('g').attr('class', 'dots');
     dots.selectAll('circle')
         .data(sortedCommits)
@@ -167,6 +175,7 @@ renderScatterPlot(data, commits);
 function renderTooltipContent(commit) {
     const link = document.getElementById('commit-link');
     const date = document.getElementById('commit-date');
+    const lines = document.getElementById('lines-edited');
 
     if (Object.keys(commit).length === 0) return;
 
@@ -175,6 +184,7 @@ function renderTooltipContent(commit) {
     date.textContent = commit.datetime?.toLocaleString('en', {
         dateStyle: 'full',
     });
+    lines.textContent = data.filter((d) => d.commit === commit.id).length;
 }
 
 function updateTooltipVisibility(isVisible) {
@@ -189,3 +199,56 @@ function updateTooltipPosition(event) {
     tooltip.style.top = `${event.clientY}px`;
 }
 
+function createBrushSelector(svg) {
+    // Get dimensions
+    const width = parseInt(svg.attr('width'));
+    const height = parseInt(svg.attr('height'));
+
+    // CRITICAL: Add background rect to capture mouse events
+    svg.append('rect')
+        .attr('width', width)
+        .attr('height', height)
+        .attr('fill', 'transparent')
+        .attr('pointer-events', 'all')
+        .attr('class', 'brush-overlay');
+
+    // Create brush
+    const brush = d3.brush()
+        .extent([[0, 0], [width, height]])
+        .on('start brush end', brushed);
+    // Attach brush to a group, not directly to SVG
+    svg.append('g')
+        .attr('class', 'brush')
+        .call(brush);
+
+    console.log("added brush!");
+
+    // Raise dots and everything after overlay
+    svg.selectAll('.dots, .overlay ~ *').raise();
+}
+function brushed(event) {
+    const selection = event.selection;
+    renderSelectionCount(selection);
+}
+function isCommitSelected(selection, commit) {
+    if (!selection) {
+        return false;
+    }
+    const [x0, x1] = selection.map((d) => d[0]);
+    const [y0, y1] = selection.map((d) => d[1]);
+    const x = xScale(commit.datetime);
+    const y = yScale(commit.hourFrac);
+
+    return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+}
+function renderSelectionCount(selection) {
+    const selectedCommits = selection
+        ? commits.filter((d) => isCommitSelected(selection, d))
+        : [];
+
+    const countElement = document.querySelector('#selection-count');
+    countElement.textContent = `${selectedCommits.length || 'No'
+        } commits selected`;
+
+    return selectedCommits;
+}
