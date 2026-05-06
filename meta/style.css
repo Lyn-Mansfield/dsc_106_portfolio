@@ -1,3 +1,13 @@
+.gridline {
+  opacity: 0.2;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em; 
+  left: 1em;
+}
+
 dl.info {
   display: grid;
   grid-template-columns: auto 1fr;
