@@ -130,18 +130,16 @@ function renderScatterPlot(data, commits) {
 
     // Create the axes
     const xAxis = d3.axisBottom(xScale);
-    const yAxis = d3.axisLeft(yScale);
-    // Add X axis
+    const yAxis = d3.axisLeft(yScale) // Set Y axis to actual clock times
+        .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
+    // Attach X axis
     svg.append('g')
         .attr('transform', `translate(0, ${usableArea.bottom})`)
         .call(xAxis);
-    // Add Y axis
+    // Attach Y axis
     svg.append('g')
         .attr('transform', `translate(${usableArea.left}, 0)`)
         .call(yAxis);
-    // Set Y axis to actual clock times
-    const yAxis = d3.axisLeft(yScale)
-        .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
     // Add gridlines BEFORE the axes
     const gridlines = svg.append('g')
         .attr('class', 'gridlines')
