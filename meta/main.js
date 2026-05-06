@@ -53,13 +53,13 @@ function renderCommitInfo(data, commits) {
     dl.append('dt').text('Total commits');
     dl.append('dd').text(commits.length);
 
-    // Add avg file length
+    // Add avg file length, rounded to 3 places
     const fileLengths = d3.rollups(
         data,
         (v) => d3.max(v, (v) => v.line),
         (d) => d.file,
     );
-    const averageFileLength = d3.mean(fileLengths, (d) => d[1]);
+    const averageFileLength = d3.mean(fileLengths, (d) => d[1]).toFixed(3);
     dl.append('dt').html('Avg File Length');
     dl.append('dd').text(averageFileLength);
 
@@ -68,8 +68,8 @@ function renderCommitInfo(data, commits) {
     dl.append('dt').html('Max File Length');
     dl.append('dd').text(maxFileLength);
 
-    // Add avg line length
-    const averageLineLength = d3.mean(data, d => d.length);
+    // Add avg line length, rounded to 3 places
+    const averageLineLength = d3.mean(data, d => d.length).toFixed(3);
     dl.append('dt').html('Avg Line Length');
     dl.append('dd').text(averageLineLength);
 
@@ -81,6 +81,7 @@ function renderCommitInfo(data, commits) {
 
 let data = await loadData();
 let commits = processCommits(data);
+renderCommitInfo(data, commits);
 console.log(commits);
 
 function renderScatterPlot(data, commits) {
