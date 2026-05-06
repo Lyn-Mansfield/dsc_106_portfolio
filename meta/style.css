@@ -66,3 +66,7 @@ circle:hover {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
+
+#language-breakdown, #selection-count {
+    display: flex;
+}

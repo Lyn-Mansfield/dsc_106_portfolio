@@ -56,13 +56,13 @@ function renderCommitInfo(data, commits) {
     dl.append('dt').text('Total commits');
     dl.append('dd').text(commits.length);
 
-    // Add avg file length, rounded to 3 places
+    // Add avg file length, rounded to 2 places
     const fileLengths = d3.rollups(
         data,
         (v) => d3.max(v, (v) => v.line),
         (d) => d.file,
     );
-    const averageFileLength = d3.mean(fileLengths, (d) => d[1]).toFixed(3);
+    const averageFileLength = d3.mean(fileLengths, (d) => d[1]).toFixed(2);
     dl.append('dt').html('Avg File Length');
     dl.append('dd').text(averageFileLength);
 
@@ -71,8 +71,8 @@ function renderCommitInfo(data, commits) {
     dl.append('dt').html('Max File Length');
     dl.append('dd').text(maxFileLength);
 
-    // Add avg line length, rounded to 3 places
-    const averageLineLength = d3.mean(data, d => d.length).toFixed(3);
+    // Add avg line length, rounded to 2 places
+    const averageLineLength = d3.mean(data, d => d.length).toFixed(2);
     dl.append('dt').html('Avg Line Length');
     dl.append('dd').text(averageLineLength);
 
@@ -91,8 +91,11 @@ function renderScatterPlot(data, commits) {
     const width = 1000;
     const height = 600;
 
+    const [minDate, maxDate] = d3.extent(commits, (d) => d.datetime);
+    const dateRange = maxDate - minDate;
+    const padding = dateRange * 0.03; // 5% padding
     xScale = xScale
-        .domain(d3.extent(commits, (d) => d.datetime))
+        .domain([minDate - padding, maxDate])
         .range([0, width])
         .nice();
     yScale = yScale
@@ -246,13 +249,12 @@ function isCommitSelected(selection, commit) {
 }
 
 function renderSelectionCount(selectedCommits) {
-    const countElement = document.querySelector('#selection-count');
-    countElement.textContent = `${selectedCommits.length || 'No'
-        } commits selected`;
+    const countElement = d3.select('#selection-count');
+    countElement.select('dd').text(`${selectedCommits.length}`);
 }
 function colorSelectedCommits(selectedCommits) {
     const svg = d3.select('svg');
-    
+
     // Remove selected class from all dots
     svg.selectAll('circle').classed('selected', false);
     // Add selected class to dots matching selected commit IDs
@@ -264,17 +266,32 @@ function colorSelectedCommits(selectedCommits) {
 }
 
 function renderLanguageBreakdown(selectedCommits) {
-  if (selectedCommits.length === 0) {
-    container.innerHTML = '';
-    return;
-  }
-  const requiredCommits = selectedCommits.length ? selectedCommits : commits;
-  const lines = requiredCommits.flatMap((d) => d.lines);
+    const container = document.getElementById('language-breakdown');
 
-  // Use d3.rollup to count lines per language
-  const breakdown = d3.rollup(
-    lines,
-    (v) => v.length,
-    (d) => d.type,
-  );
+    if (selectedCommits.length === 0) {
+        container.innerHTML = '';
+        return;
+    }
+    const requiredCommits = selectedCommits.length ? selectedCommits : commits;
+    const lines = requiredCommits.flatMap((d) => d.lines);
+
+    // Use d3.rollup to count lines per language
+    const breakdown = d3.rollup(
+        lines,
+        (v) => v.length,
+        (d) => d.type,
+    );
+
+    // Update DOM with breakdown
+    container.innerHTML = '';
+
+    for (const [language, count] of breakdown) {
+        const proportion = count / lines.length;
+        const formatted = d3.format('.1~%')(proportion);
+
+        container.innerHTML += `
+            <dt>${language.toUpperCase()}</dt>
+            <dd>${count} lines (${formatted})</dd>
+        `;
+    }
 }
