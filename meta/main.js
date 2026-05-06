@@ -81,10 +81,6 @@ function renderCommitInfo(data, commits) {
 
 let data = await loadData();
 let commits = processCommits(data);
-
-renderCommitInfo(data, commits);
-let data = await loadData();
-let commits = processCommits(data);
 console.log(commits);
 
 function renderScatterPlot(data, commits) {
