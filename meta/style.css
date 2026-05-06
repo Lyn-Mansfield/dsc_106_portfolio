@@ -1,4 +1,4 @@
-.gridline {
+.gridlines {
   opacity: 0.2;
 }
 
@@ -13,6 +13,8 @@ dl.info {
   grid-template-columns: auto 1fr;
   gap: 0.5rem 1rem;
   margin: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
   
   dt {
     font-weight: normal;
@@ -26,6 +28,10 @@ dl.info {
     font-weight: 500;
     color: #222
   }
+}
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
 }
 
 circle {

@@ -164,3 +164,8 @@ function renderTooltipContent(commit) {
     });
 }
 
+function updateTooltipVisibility(isVisible) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = !isVisible;
+}
+
