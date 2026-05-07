@@ -7,7 +7,7 @@
   top: 1em; 
   left: 1em;
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 2px 2px 2px blue;
+  box-shadow: 2px 2px 2px rgba(0, 100, 100, 0.3);
   border-radius: 3px;
   backdrop-filter: blur(1px);
   padding: 1px;
@@ -17,6 +17,7 @@ dl.info {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.5rem 1rem;
+  padding: 3px 10px;
   margin: 0;
   transition-duration: 500ms;
   transition-property: opacity, visibility;
@@ -25,7 +26,7 @@ dl.info {
     font-weight: normal;
     color: #666;
     font-size: 1em;
-    padding: 0;
+    padding: 0 10px;
     margin: 0;
   }
 
