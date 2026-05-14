@@ -2,9 +2,16 @@
   {
     "title": "Boston Bike Watching",
     "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "image": "../images/boston-bike-watching.png",
     "description": "Solo project analyzing a dataset of bike usage in Boston, MA. Created a dashboard using MapboxGL to visualize the data and identify trends in bike usage across different neighborhoods and times of day.",
     "url": "https://lyn-mansfield.github.io/dsc_106_bikewatching/"
+  },
+  {
+    "title": "Sea Ice Visualization",
+    "year": "2026",
+    "image": "../images/sea-ice-viz.png",
+    "description": "Student group project visualizing a CMIP6 dataset of sea ice thickness, using D3 to create an interactive map showing changes in sea ice over time.",
+    "url": "https://lyn-mansfield.github.io/dsc_106_project_3/"
   },
   {
     "title": "Reddit Virality Study",
@@ -67,13 +74,6 @@
     "year": "2021",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Praesentium optio blanditiis autem quaerat a vero fuga temporibus corrupti, vel pariatur repudiandae exercitationem eligendi. Doloremque cum aliquam eveniet totam quo, earum suscipit neque reiciendis amet ab quidem nam quaerat.",
-    "url": null
-  },
-  {
-    "title": "Minus corporis praesentium aliquam?",
-    "year": "2024",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Impedit maxime placeat nesciunt voluptatibus autem deleniti officiis fuga quibusdam error a, odio quisquam voluptatem libero aut facere voluptates neque est sunt dicta ipsam. Blanditiis aperiam quam maxime harum deleniti.",
     "url": null
   },
   {
