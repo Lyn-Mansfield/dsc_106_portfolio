@@ -250,7 +250,7 @@ hr {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 3;
-    gap: 1em;
+    gap: 0.5em;
   }
   h2 {
     display: flex;
