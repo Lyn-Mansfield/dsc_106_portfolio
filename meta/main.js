@@ -295,3 +295,28 @@ function renderLanguageBreakdown(selectedCommits) {
         `;
     }
 }
+
+let commitProgress = 100;
+
+let timeScale = d3
+  .scaleTime()
+  .domain([
+    d3.min(commits, (d) => d.datetime),
+    d3.max(commits, (d) => d.datetime),
+  ])
+  .range([0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
+const commitProgressInput = document.getElementById('commit-progress');
+const commitTimeDisplay = document.getElementById('commit-time');
+
+function onTimeSliderChange() {
+    commitProgress = +commitProgressInput.value;
+    commitMaxTime = timeScale.invert(commitProgress);
+    commitTimeDisplay.textContent = commitMaxTime.toLocaleString('en', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+    });
+}
+commitProgressInput.addEventListener('input', onTimeSliderChange);
+onTimeSliderChange(); // Initialize display on page load
