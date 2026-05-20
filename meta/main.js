@@ -85,7 +85,8 @@ function renderCommitInfo(data, commits) {
 let data = await loadData();
 let commits = processCommits(data);
 renderCommitInfo(data, commits);
-console.log(commits);
+
+let brushController;
 
 function renderScatterPlot(data, commits) {
     const width = 1000;
@@ -109,7 +110,7 @@ function renderScatterPlot(data, commits) {
         .attr('height', height)
         .attr('viewBox', `0 0 ${width} ${height}`)
         .style('overflow', 'visible');
-    createBrushSelector(svg); // attach a brush to svg
+    brushController = createBrushSelector(svg); // attach a brush to svg
 
     // Preprocessing step
     const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
@@ -228,6 +229,8 @@ function createBrushSelector(svg) {
 
     // Raise dots and everything after overlay
     svg.selectAll('.dots, .overlay ~ *').raise();
+
+    return {brush, brushGroup: svg.select('g.brush')};
 }
 function brushed(event) {
     const selection = event.selection;
@@ -324,6 +327,7 @@ function onTimeSliderChange() {
 
     filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
     updateScatterPlot(data, filteredCommits);
+    updateBrushSelection();
 }
 commitProgressInput.addEventListener('input', onTimeSliderChange);
 onTimeSliderChange(); // Initialize display on page load
@@ -376,4 +380,11 @@ function updateScatterPlot(data, commits) {
             d3.select(event.currentTarget).style('fill-opacity', 0.7);
             updateTooltipVisibility(false);
         });
+}
+
+function updateBrushSelection() {
+    const currentSelection = d3.brushSelection(brushController.brushGroup.node());
+    if (currentSelection) {
+        brushController.brushGroup.call(brushController.brush.move, currentSelection);
+    }
 }
