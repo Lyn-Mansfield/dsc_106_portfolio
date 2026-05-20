@@ -126,6 +126,7 @@ circle:hover {
 
   dt {
     grid-column: 1;
+    border: 0;
   }
 
   dd {
@@ -150,6 +151,6 @@ circle:hover {
   display: flex;
   width: 0.5em;
   aspect-ratio: 1;
-  background: steelblue;
+  background: var(--color);
   border-radius: 50%;
 }

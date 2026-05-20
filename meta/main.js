@@ -396,8 +396,10 @@ function updateFileDisplay(filteredCommits) {
         .groups(lines, (d) => d.file)
         .map(([name, lines]) => {
             return { name, lines };
-        });
+        })
+        .sort((a, b) => b.lines.length - a.lines.length);
 
+    let colors = d3.scaleOrdinal(d3.schemeTableau10);
     let filesContainer = d3
         .select('#files')
         .selectAll('div')
@@ -408,15 +410,18 @@ function updateFileDisplay(filteredCommits) {
                     div.append('dt').append('code');
                     div.append('dd');
                 }),
-        );
+        )
 
-    // append one div for each line
+
+    // Append one div for each line
     filesContainer
         .select('dd')
         .selectAll('div')
         .data((d) => d.lines)
         .join('div')
-        .attr('class', 'loc');
+        .attr('class', 'loc')
+        .attr('style', (d) => `--color: ${colors(d.type)}`);
 
+    // Update file names
     filesContainer.select('dt > code').text((d) => d.name);
 }
