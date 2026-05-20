@@ -44,9 +44,14 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 
 circle {
-  transition: 200ms;
+  transition: 500ms;
+  transition-timing-function: ease;
   transform-origin: center;
   transform-box: fill-box;
+
+  @starting-style {
+    r: 0;
+  }
 }
 
 circle.selected {
@@ -78,9 +83,9 @@ circle:hover {
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
 }
 
 .commit-time-filter {
@@ -107,4 +112,44 @@ circle:hover {
     font-size: 0.9em;
     color: #666;
   }
+}
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  >div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  dd {
+    grid-row: 1;
+    grid-column: 2;
+
+    font-size: 1em;
+    justify-content: left;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+
+    gap: 0.15em;
+    padding-top: 0.6em;
+    margin-left: 0;
+  }
+}
+
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: steelblue;
+  border-radius: 50%;
 }

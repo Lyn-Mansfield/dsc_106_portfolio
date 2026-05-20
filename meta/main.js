@@ -230,7 +230,7 @@ function createBrushSelector(svg) {
     // Raise dots and everything after overlay
     svg.selectAll('.dots, .overlay ~ *').raise();
 
-    return {brush, brushGroup: svg.select('g.brush')};
+    return { brush, brushGroup: svg.select('g.brush') };
 }
 function brushed(event) {
     const selection = event.selection;
@@ -328,6 +328,7 @@ function onTimeSliderChange() {
     filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
     updateScatterPlot(data, filteredCommits);
     updateBrushSelection();
+    updateFileDisplay(filteredCommits);
 }
 commitProgressInput.addEventListener('input', onTimeSliderChange);
 onTimeSliderChange(); // Initialize display on page load
@@ -363,7 +364,7 @@ function updateScatterPlot(data, commits) {
     const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
     dots
         .selectAll('circle')
-        .data(sortedCommits)
+        .data(sortedCommits, (d) => d.id)
         .join('circle')
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
@@ -387,4 +388,35 @@ function updateBrushSelection() {
     if (currentSelection) {
         brushController.brushGroup.call(brushController.brush.move, currentSelection);
     }
+}
+
+function updateFileDisplay(filteredCommits) {
+    let lines = filteredCommits.flatMap((d) => d.lines);
+    let files = d3
+        .groups(lines, (d) => d.file)
+        .map(([name, lines]) => {
+            return { name, lines };
+        });
+
+    let filesContainer = d3
+        .select('#files')
+        .selectAll('div')
+        .data(files, (d) => d.name)
+        .join(
+            (enter) =>
+                enter.append('div').call((div) => {
+                    div.append('dt').append('code');
+                    div.append('dd');
+                }),
+        );
+
+    // append one div for each line
+    filesContainer
+        .select('dd')
+        .selectAll('div')
+        .data((d) => d.lines)
+        .join('div')
+        .attr('class', 'loc');
+
+    filesContainer.select('dt > code').text((d) => d.name);
 }
