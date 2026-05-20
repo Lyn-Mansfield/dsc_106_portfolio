@@ -39,26 +39,26 @@
         <div id="scatter-plot">
             <h2>Commits by time of day</h2>
             <div id="chart"></div>
+
+            <div class="center">
+                <dl id="selection-count" class="stats">
+                    <dt>Commits Selected</dt>
+                    <dd>0</dd>
+                </dl>
+            </div>
+
+            <div class="center">
+                <dl id="language-breakdown" class="stats"></dl>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div></div>
 
-        <dl id="selection-count" class="stats">
-            <dt>Commits Selected</dt>
-            <dd>0</dd>
-        </dl>
 
-        <div class="commit-time-filter">
-            <label for="commit-progress">Show commits until:</label>
-            <input type="range" id="commit-progress" min="0" max="100" value="100">
-            <time id="commit-time" datetime=""></time>
-        </div>
-    </div>
-
-    <div class="center">
-        <dl id="language-breakdown" class="stats"></dl>
+    <div class="commit-time-filter">
+        <label for="commit-progress">Show commits until:</label>
+        <input type="range" id="commit-progress" min="0" max="100" value="100">
+        <time id="commit-time" datetime=""></time>
     </div>
 
     <dl id="files"></dl>

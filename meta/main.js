@@ -427,9 +427,10 @@ function updateFileDisplay(filteredCommits) {
     filesContainer.select('dt > code').text((d) => d.name);
 }
 
+const sortedCommits = d3.sort(commits, (d) => d.datetime);
 d3.select('#scatter-story')
     .selectAll('.step')
-    .data(commits)
+    .data(sortedCommits)
     .join('div')
     .attr('class', 'step')
     .html(
@@ -455,7 +456,12 @@ d3.select('#scatter-story')
     );
 
 function onStepEnter(response) {
-    console.log(response);
+    const commitMaxTime = response.element.__data__.datetime;
+
+    filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+    updateScatterPlot(data, filteredCommits);
+    updateBrushSelection();
+    updateFileDisplay(filteredCommits);
 }
 
 const scroller = scrollama();
