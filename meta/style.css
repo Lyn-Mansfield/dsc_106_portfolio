@@ -1,3 +1,7 @@
+body {
+  max-width: 150ch;
+}
+
 .gridlines {
   opacity: 0.2;
 }
@@ -153,4 +157,30 @@ circle:hover {
   aspect-ratio: 1;
   background: var(--color);
   border-radius: 50%;
+}
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+
+  >* {
+    flex: 1;
+  }
+}
+
+#scatter-story {
+  position: relative;
+
+  .step {
+    padding-bottom: 1em;
+  }
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 670px;
 }
